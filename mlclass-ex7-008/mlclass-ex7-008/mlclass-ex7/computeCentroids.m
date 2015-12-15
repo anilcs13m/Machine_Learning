@@ -26,11 +26,12 @@ centroids = zeros(K, n);
 % Note: You can use a for-loop over the centroids to compute this.
 %
 
-for i=1:K
-    centroids(i,:) = 1 / sum(idx == i) * sum(X(idx == i,:));
+for k = 1:K
+	centroid_count = X(find(idx==k), :);    % check for the present centroid 
+	n = size(centroid_count, 1);            % total number of count data point
+	centroids(k, :) = sum(centroid_count) ./ n;		% compute new centroid location
 end
 
-% =============================================================
 
 
 end
